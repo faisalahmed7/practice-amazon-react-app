@@ -5,6 +5,10 @@ import './Shop.css'
 const Shop = () => {
     const[products,setProducts]=useState([])
 
+
+//     const handledCart=(id)=>{
+// console.log('Chudi',id)
+// }
     useEffect(()=>{
         fetch('products.json')
         .then(res=>res.json())
