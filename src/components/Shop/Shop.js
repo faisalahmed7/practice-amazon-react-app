@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../Product/Product';
+import Cart from '../Cart/Cart';
 import './Shop.css'
 
 const Shop = () => {
     const[products,setProducts]=useState([])
     const[cart,setCart]=useState([])
-    const[price,setPrice]=useState(0)
+    
 
     
     useEffect(()=>{
@@ -17,9 +18,9 @@ const Shop = () => {
 
     const handleCart=(product)=>{
        const  newCart=[...cart, product]
-       const newSum= price+product.price;
+       
        setCart(newCart)
-       setPrice(newSum)
+       
     }
     return (
         <div className='container'>
@@ -29,15 +30,11 @@ const Shop = () => {
                     products.map(product=><Product key={product.id} product={product} handleCart={handleCart}></Product>)
                 }
 
-
-
-
         </div>
 
             <div className="cart-container">
-                <h2>Order Summary</h2>
-                <p>Total Orders:{cart.length} </p>
-                <p>Total Sum:{price} </p>
+               <Cart  cart={cart}></Cart>
+                
             </div>
         </div>
     );
